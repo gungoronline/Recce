@@ -5,10 +5,13 @@
       <map>
         <entry key="..\:/AndroidLibs/Recce/Recce/src/main/res/layout/activity_main.xml" value="0.21195652173913043" />
         <entry key="..\:/AndroidLibs/Recce/app/src/main/res/layout/activity_main.xml" value="0.1359375" />
+        <entry key="Recce/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="Recce/src/main/res/layout/layout_sample_1txt.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/main.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

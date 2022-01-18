@@ -1,19 +1,14 @@
-package com.gungoronline.recce;
+# Recce
+Recce is powerfull adapter !
 
-import androidx.appcompat.app.AppCompatActivity;
+- Project by [@serifgungor](https://github.com/serifgungor) and Generated in 27.09.2022.
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.gungoronline.recce.Adapter.Recce;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
+<detail>
+	<summary>Listing on ListView by BaseAdapter</summary>
+	###Sample Code 
+```
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> countries = new ArrayList<>();
@@ -65,3 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+```
+
+</detail>
+
