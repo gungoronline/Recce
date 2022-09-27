@@ -5,11 +5,20 @@ Recce is powerfull adapter !
 
 ## Buildings
 1. - Listing on ListView by BaseAdapter
-2. - Listing on Spinner by BaseAdapter
-3. - Listing on RecyclerView by RecycleAdapter
+2. - Listing on ListView with SubText by BaseAdapter
+3. - Listing on Spinner by BaseAdapter
+4. - Listing on RecyclerView by RecycleAdapter
 
 
 ### Listing on ListView by BaseAdapter
+
+| PARAMETERS    | VALUES                                      |
+| ------------- | ------------------------------------------- |
+| Components;   | tvSample1_tvTitle (Type: TextView)          |
+| Layout        | -1                                          |
+| ViewType;     | Recce.BaseAdapt.LAYOUT_SAMPLE_1TXT          |
+| Methods;      | setOnViewListener                           |
+
 
 ![Photto Image Cache](/images/ss1.png)
 
@@ -62,7 +71,102 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+### Listing on ListView with SubText by BaseAdapter
+
+| PARAMETERS    | VALUES                                                  |
+| ------------- | ------------------------------------------------------- |
+| Components;   | tvSample2_tvTitle,tvSample2_tvSubTitle (Type: TextView) |
+| Layout        | -1                                                      |
+| ViewType;     | Recce.BaseAdapt.LAYOUT_SAMPLE_2TXT                      |
+| Methods;      | setOnViewListener                                       |
+
+
+![Photto Image Cache](/images/ss4.png)
+
+```
+class Celebrities{
+    private String title;
+    private String description;
+
+    public Celebrities(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+    ArrayList<Celebrities> celebrities = new ArrayList<>();
+    Recce.BaseAdapt baseAdapt;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        celebrities.add(new Celebrities("TARKAN","MEGASTAR"));
+        celebrities.add(new Celebrities("AJDA PEKKAN","SÜPER STAR"));
+        celebrities.add(new Celebrities("BÜLENT ERSOY","DİVA"));
+        celebrities.add(new Celebrities("İBRAHİM TATLISES","İMPARATOR"));
+        celebrities.add(new Celebrities("MÜSLÜM GÜRSES","BABA"));
+
+        baseAdapt = new Recce.BaseAdapt(
+                celebrities,
+                getApplicationContext(),
+                -1,
+                Recce.BaseAdapt.LAYOUT_SAMPLE_2TXT
+        );
+
+        baseAdapt.setOnViewListener(new Recce.BaseAdapt.OnViewListener() {
+            @Override
+            public void onView(View v, int position) {
+                //if layout argument != 0 or -1
+            }
+
+            @Override
+            public void onFormView(View v, int position, HashMap<Integer, ?> objects) {
+                //if viewType argument is filled
+                //if you dont known in layout objects, you write logd objects.toString()
+                //Log.d("sa2",objects.toString());
+                //D/sa2: {-1=android.widget.TextView{dd62fae V.ED..... ......ID 0,0-0,0 #7f0801ca app:id/tvSample1_tvTitle}}
+                ((TextView)v.findViewById(R.id.tvSample2_tvTitle)).setText(celebrities.get(position).getTitle());
+                ((TextView)v.findViewById(R.id.tvSample2_tvSubTitle)).setText(celebrities.get(position).getDescription());
+
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getApplicationContext(),"POS: "+position+" TEXT: "+celebrities.get(position).getTitle(),Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
+        setContentView(baseAdapt.setList());
+    }
+}
+```
+
 ### Listing on Spinner by BaseAdapter
+
+
+| PARAMETERS    | VALUES                                                 |
+| ------------- | ------------------------------------------------------ |
+| Components;   | tvSpinner (Type: TextView),ivSpinner (Type: ImageView) |
+| Layout        | -1                                                     |
+| ViewType;     | Recce.BaseAdapt.LAYOUT2_SPINNER_1IMG_1TXT              |
+| Methods;      | setOnViewListener                                      |
 
 ![Photto Image Cache](/images/ss3.png)
 
@@ -156,6 +260,12 @@ public class MainActivity extends AppCompatActivity {
 	
 ### Listing on RecyclerView by RecycleAdapter
 
+| PARAMETERS    | VALUES                                                                |
+| ------------- | --------------------------------------------------------------------- |
+| Components;   | layout1_tv1,layout1_tv2 (Type: TextView),layout1_iv (Type: ImageView) |
+| Layout        | R.layout.layout1_cardview_1img_2txt                                   |
+| ViewType;     | -1                                                                    |
+| Methods;      | setOnBindViewListener                                                 |
 
 	
 ![Photto Image Cache](/images/ss2.png)
