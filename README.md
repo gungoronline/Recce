@@ -3,6 +3,29 @@ Recce is powerfull adapter !
 
 - Project by [@serifgungor](https://github.com/serifgungor) and Generated in 27.09.2022.
 
+# Installation
+- [![](https://jitpack.io/v/gungoronline/Recce.svg)](https://jitpack.io/#gungoronline/Recce)
+- Gradle
+```groovy
+allprojects {
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
+}
+dependencies {
+  implementation 'com.github.gungoronline:Recce:0.0.1'
+}
+```
+or Maven
+```xml
+<dependency>
+   <groupId>com.github.gungoronline</groupId>
+   <artifactId>Recce</artifactId>
+   <version>0.0.1</version>
+</dependency>
+```
+
 ## Buildings
 1. - Listing on ListView by BaseAdapter
 2. - Listing on ListView with SubText by BaseAdapter
