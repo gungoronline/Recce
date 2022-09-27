@@ -3,14 +3,17 @@ Recce is powerfull adapter !
 
 - Project by [@serifgungor](https://github.com/serifgungor) and Generated in 27.09.2022.
 
+## Buildings
+1. - Listing on ListView by BaseAdapter
+2. -
 
-
-<detail>
-	<summary>Listing on ListView by BaseAdapter</summary>
-	###Sample Code 
+### Listing on ListView by BaseAdapter
+#### LAYOUT_SAMPLE_1TXT
+![Photto Image Cache](/images/ss1.png)
+<details>
+	<summary>Click here for LAYOUT_SAMPLE_1TXT</summary>
 ```
 public class MainActivity extends AppCompatActivity {
-
     ArrayList<String> countries = new ArrayList<>();
     Recce.BaseAdapt baseAdapt;
     @Override
@@ -53,14 +56,10 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
-
         setContentView(baseAdapt.setList());
-
-
     }
 }
 ```
 
-</detail>
+</details>
 
