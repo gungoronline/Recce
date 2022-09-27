@@ -5,7 +5,8 @@ Recce is powerfull adapter !
 
 ## Buildings
 1. - Listing on ListView by BaseAdapter
-2. - Listing on RecyclerView by RecycleAdapter
+2. - Listing on Spinner by BaseAdapter
+3. - Listing on RecyclerView by RecycleAdapter
 
 
 ### Listing on ListView by BaseAdapter
@@ -57,6 +58,97 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         setContentView(baseAdapt.setList());
+    }
+}
+```
+
+### Listing on Spinner by BaseAdapter
+
+![Photto Image Cache](/images/ss3.png)
+
+```
+class Country implements Serializable{
+    private String name;
+    private String flagUrl;
+
+    public Country(String name, String flagUrl) {
+        this.name = name;
+        this.flagUrl = flagUrl;
+    }
+
+    public Country() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFlagUrl() {
+        return flagUrl;
+    }
+
+    public void setFlagUrl(String flagUrl) {
+        this.flagUrl = flagUrl;
+    }
+}
+
+public class MainActivity extends AppCompatActivity {
+
+    ArrayList<Country> countries = new ArrayList<>();
+    Recce.BaseAdapt baseAdapt;
+    Spinner sp;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+        sp = findViewById(R.id.spinner);
+
+        countries.add(new Country("TÜRKİYE","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/250px-Flag_of_Turkey.svg.png"));
+        countries.add(new Country("UKRAİNE","https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/250px-Flag_of_Ukraine.svg.png"));
+        countries.add(new Country("RUSSİA","https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/250px-Flag_of_Russia.svg.png"));
+        countries.add(new Country("BULGARİA","https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Bulgaria.svg/250px-Flag_of_Bulgaria.svg.png"));
+        countries.add(new Country("NORWAY","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/250px-Flag_of_Norway.svg.png"));
+
+        baseAdapt = new Recce.BaseAdapt(
+                countries,
+                getApplicationContext(),
+                -1,
+                Recce.BaseAdapt.LAYOUT2_SPINNER_1IMG_1TXT
+        );
+
+        baseAdapt.setOnViewListener(new Recce.BaseAdapt.OnViewListener() {
+            @Override
+            public void onView(View v, int position) {
+
+            }
+
+            @Override
+            public void onFormView(View v, int position, HashMap<Integer, ?> objects) {
+                ImageView iv = v.findViewById(R.id.ivSpinner);
+                TextView tv1 = v.findViewById(R.id.tvSpinner);
+
+                Glide.with(v.getContext()).load(countries.get(position).getFlagUrl()).into(iv);
+                tv1.setText(countries.get(position).getName());
+            }
+        });
+        sp.setAdapter(baseAdapt);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(),countries.get(i).getName(),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 }
 ```
