@@ -72,15 +72,10 @@ public class MainActivity extends AppCompatActivity {
             public void onView(View v, int position) {
                 //if layout argument != 0 or -1
             }
-
             @Override
             public void onFormView(View v, int position, HashMap<Integer, ?> objects) {
                 //if viewType argument is filled
-                //if you dont known in layout objects, you write logd objects.toString()
-                //Log.d("sa2",objects.toString());
-                //D/sa2: {-1=android.widget.TextView{dd62fae V.ED..... ......ID 0,0-0,0 #7f0801ca app:id/tvSample1_tvTitle}}
                 ((TextView)v.findViewById(R.id.tvSample1_tvTitle)).setText(countries.get(position));
-
                 v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -162,9 +157,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFormView(View v, int position, HashMap<Integer, ?> objects) {
                 //if viewType argument is filled
-                //if you dont known in layout objects, you write logd objects.toString()
-                //Log.d("sa2",objects.toString());
-                //D/sa2: {-1=android.widget.TextView{dd62fae V.ED..... ......ID 0,0-0,0 #7f0801ca app:id/tvSample1_tvTitle}}
                 ((TextView)v.findViewById(R.id.tvSample2_tvTitle)).setText(celebrities.get(position).getTitle());
                 ((TextView)v.findViewById(R.id.tvSample2_tvSubTitle)).setText(celebrities.get(position).getDescription());
 
